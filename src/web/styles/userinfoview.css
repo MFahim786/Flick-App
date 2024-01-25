@@ -99,10 +99,10 @@ p {
 /* Media Query for Mobile Devices */
 @media (max-width: 600px) {
   .modal {
-    width: 80%; /* Adjust the width for smaller screens */
+    width: 75%; /* Adjust the width for smaller screens */
   }
   
   .contacstscontainer {
-    width: 80%; /* Adjust the width for smaller screens */
+    width: 75%; /* Adjust the width for smaller screens */
   }
 }
