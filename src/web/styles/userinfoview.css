@@ -7,8 +7,9 @@
   align-items: center;
   
   }
-  .useName{
+  .usrdta{
 font-family: 'Myfont',carosmedium,sans-serif;
+font-size: 10px;
 
   }
   p{
@@ -29,16 +30,15 @@ font-family: 'Myfont',carosmedium,sans-serif;
   margin-top: 35px;
 }
 
-.usrdata{
-  
-  margin-top: '100px';
-}
+
 /* UserInfo.css */
 .modal {
+  
   background-color: white;
   height: 100px; /* Adjust the height as needed */
   width: 200px; /* Adjust the width as needed */
   padding: 15px;
+  margin-top: 75px;
   border-radius: 10px;
   border: 2px solid rgba(255, 255, 255, 0.5); /* Transparent white border */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow */
@@ -48,7 +48,7 @@ font-family: 'Myfont',carosmedium,sans-serif;
  
 
   position: absolute;
-  top: 125px; /* Adjust the positioning as needed */
+  top: 115px; /* Adjust the positioning as needed */
   left: 50%;
   transform: translateX(-50%);
   margin-top: 7px;
@@ -88,7 +88,7 @@ font-family: 'Myfont',carosmedium,sans-serif;
   border: 2px solid rgba(255, 255, 255, 0.5); /* Transparent white border */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow */
   text-align: center;
-
+  
 
 }
 .iconImage {

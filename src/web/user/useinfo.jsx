@@ -32,18 +32,15 @@ const UserInfo = () => {
 
   return (
     <div>
-      <div className='username'>
-        <h1 className='useName'>{userData.name}</h1>
-      </div>
       <div className='overlay'>
         <div className='modal'>
           <div className='userimgcontainer'>
             <img src={usrimgurl ? usrimgurl : userimg} alt={''} className='userimg' />
           </div>
           <div className='usrdta'>
-          <p>{userData.profession}</p>
+          <h1>{userData.name}</h1>
           <p>{userData.organization}</p>
-          <p>{userData.email}</p>
+          <p>{userData.profession}</p>
           </div>
         </div>
       </div>
