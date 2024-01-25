@@ -24,7 +24,7 @@ const UserInfo = () => {
 
   if (userData.isActive === true) {
     setTimeout(() =>{
-      alert('Please Activate Your Account');
+      alert('This account is private and can not be viewed');
     }, 500)
     
     return null; // or render some alternative UI if needed
@@ -33,16 +33,18 @@ const UserInfo = () => {
   return (
     <div>
       <div className='username'>
-        <h1>{userData.name}</h1>
+        <h1 className='useName'>{userData.name}</h1>
       </div>
       <div className='overlay'>
         <div className='modal'>
           <div className='userimgcontainer'>
             <img src={usrimgurl ? usrimgurl : userimg} alt={''} className='userimg' />
           </div>
+          <div className='usrdta'>
           <p>{userData.profession}</p>
           <p>{userData.organization}</p>
           <p>{userData.email}</p>
+          </div>
         </div>
       </div>
       <div>
