@@ -26,7 +26,7 @@
 
 p {
   font-family:caros-light;
-  padding: -10px;
+  
   font-size: 14px;
   opacity: 0.5;
  
@@ -74,7 +74,15 @@ p {
   object-fit: cover;
   overflow: hidden;
 }
+.userimgcontainer:hover .userimg {
+  width: 200px; 
+  height: 200px; 
+  margin-bottom: 100px;
+  z-index: 100;
+  transition: width 0.3s, height 0.3s;
+}
 
+ 
 .contactsoverly {
   top: 0;
   left: 0;
