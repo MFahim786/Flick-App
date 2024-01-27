@@ -128,7 +128,7 @@ const SocialMediaContact = ({ socialMediaType, socialMedialink, userDirectMode, 
                                     alt={''}
                                     className='iconImage'
                                 />
-                                <p>{socialMediaName}</p>
+                                <p className="socialmedianame">{socialMediaName}</p>
                             </div>
                         </div>
                     </div>
