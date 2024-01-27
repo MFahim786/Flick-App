@@ -1,3 +1,4 @@
+// UserInfo.js
 import React, { useEffect, useState } from 'react';
 import '../styles/userinfoview.css';
 import userimg from '../assets/user1.png';
@@ -24,7 +25,7 @@ const UserInfo = () => {
 
   if (userData.isActive === true) {
     setTimeout(() =>{
-      alert('This account is private and can not be viewed');
+      alert('This account is private and cannot be viewed');
     }, 500)
     
     return null; // or render some alternative UI if needed
@@ -35,31 +36,31 @@ const UserInfo = () => {
       <div className='overlay'>
         <div className='modal'>
           <div className='userimgcontainer'>
-            <img src={usrimgurl ? usrimgurl : userimg} alt={''} className='userimg' />
+            {/* Add 'title' attribute to display image name on hover */}
+            <img src={usrimgurl ? usrimgurl : userimg} alt={''} className='userimg' title='Click to view full image' />
           </div>
           <div className='usrdta'>
-          <h1>{userData.name}</h1>
-          <p>{userData.organization}</p>
-          <p>{userData.profession}</p>
+            <h1>{userData.name}</h1>
+            <p className='profession'>{userData.profession}</p>
+            <p>{userData.organization}</p>
           </div>
         </div>
       </div>
       <div>
         <div>
           <div>
-          {userData.socialMedia
-  .filter((socialMedia) => !socialMedia.isActive)
-  .map((socialMedia) => (
-    <SocialMediaContact
-      key={socialMedia._id} 
-      socialMediaType={socialMedia.socialMediaType}
-      socialMediaName={socialMedia.socialMediaName}
-      socialMedialink={socialMedia.socialMediaLink}
-      userDirectMode={userData.userDirectMode}
-      socialMediaDirectMode={socialMedia.socialMediaDirectMode}
-    />
-  ))}
-
+            {userData.socialMedia
+              .filter((socialMedia) => !socialMedia.isActive)
+              .map((socialMedia) => (
+                <SocialMediaContact
+                  key={socialMedia._id} 
+                  socialMediaType={socialMedia.socialMediaType}
+                  socialMediaName={socialMedia.socialMediaName}
+                  socialMedialink={socialMedia.socialMediaLink}
+                  userDirectMode={userData.userDirectMode}
+                  socialMediaDirectMode={socialMedia.socialMediaDirectMode}
+                />
+              ))}
           </div>
         </div>
       </div>
