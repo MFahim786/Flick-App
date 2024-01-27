@@ -28,7 +28,7 @@ p {
   font-family:caros-light;
   padding: -10px;
   font-size: 14px;
- 
+  opacity: 0.5;
  
 }
 
@@ -60,12 +60,18 @@ p {
   left: 50%;
   transform: translateX(-50%);
   margin-top: 7px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 4px solid #ccc; 
+  box-shadow: 0 2px 2px rgba(235, 183, 183, 0.9); 
 }
 
 .userimg {
   width: 80px;
   height: 80px;
   border-radius: 40px;
+  object-fit: cover;
   overflow: hidden;
 }
 
@@ -82,12 +88,14 @@ p {
 }
 
 .contacstscontainer {
+  flex-wrap: wrap;
   display: flex;
   justify-content: start;
   align-items: center;
   background-color: white;
   width: 300px; 
-  padding: 15px;
+  height: 52px;
+  padding: 5px;
   border-radius: 10px;
   border: 2px solid rgba(255, 255, 255, 0.5); 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
@@ -101,6 +109,7 @@ p {
 }
 
 .socialMediaIcon {
+ 
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -110,6 +119,7 @@ p {
 .socialmedianame{
   font-size: large;
   color: black;
+  word-wrap: break-word;
   font-family:caros-light;
 }
 /* Media Query for Mobile Devices */
