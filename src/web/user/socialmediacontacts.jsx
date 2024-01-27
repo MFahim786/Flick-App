@@ -28,7 +28,7 @@ import icon25 from '../assets/icons/meetme.png';
 import icon26 from '../assets/icons/line.png';
 import icon27 from '../assets/icons/kik.png';
 import icon28 from '../assets/icons/google.png';
-import icon29 from '../assets/icons/gmail.png';
+import icon29 from '../assets/icons/Email.png';
 import icon30 from '../assets/icons/foodmenu.png';
 import icon31 from '../assets/icons/facetime.png';
 import icon32 from '../assets/icons/envelope.png';
@@ -80,7 +80,7 @@ const SocialMediaContact = ({ socialMediaType, socialMedialink, userDirectMode, 
         'Line': icon26,
         'kik': icon27,
         'Google': icon28,
-        'Gmail': icon29,
+        'Email': icon29,
         'Foodmenu': icon30,
         'Facetime': icon31,
         'Envelope': icon32,
