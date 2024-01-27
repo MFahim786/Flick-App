@@ -1,19 +1,31 @@
 /* UserInfo.css */
 @import './fonts.css';
-
+@font-face {
+  font-family: caros-black;
+  src: url('../assets/fonts/Nunito-BlackItalic.ttf');
+}
+@font-face {
+  font-family: caros-light;
+  src: url('../assets/fonts/carosmedium.otf');
+}
 .username {
   display: flex;
   justify-content: center;
   align-items: center;
+  
+
 }
 
 .usrdta {
   font-family: 'Myfont', carosmedium, sans-serif;
   font-size: 10px;
 }
+ h1{
+  font-family:caros-black;
+ }
 
 p {
-  font-family: 'Myfont', caroslight, sans-serif;
+  font-family:caros-light;
   padding: -10px;
   font-size: 14px;
  
@@ -33,18 +45,18 @@ p {
 
 .modal {
   background-color: white;
-  width: 300px; 
+  width: 300px;
   padding: 15px;
   margin-top: 75px;
   border-radius: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.5); /* Transparent white border */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow */
+  border: 2px solid rgba(255, 255, 255, 0.5); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
 .userimgcontainer {
   position: absolute;
-  top: 115px; /* Adjust the positioning as needed */
+  top: 115px; 
   left: 50%;
   transform: translateX(-50%);
   margin-top: 7px;
@@ -77,15 +89,15 @@ p {
   width: 300px; 
   padding: 15px;
   border-radius: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.5); /* Transparent white border */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow */
+  border: 2px solid rgba(255, 255, 255, 0.5); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
   text-align: center;
 }
 
 .iconImage {
-  width: 30px; /* Adjust the width as needed */
-  height: 30px; /* Adjust the height as needed */
-  border-radius: 50%;
+  width: 30px; 
+  height: 30px; 
+  
 }
 
 .socialMediaIcon {
@@ -95,14 +107,18 @@ p {
   flex-direction: row;
   gap: 20px;
 }
-
+.socialmedianame{
+  font-size: large;
+  color: black;
+  font-family:caros-light;
+}
 /* Media Query for Mobile Devices */
 @media (max-width: 600px) {
   .modal {
-    width: 75%; /* Adjust the width for smaller screens */
+    width: 75%; 
   }
   
   .contacstscontainer {
-    width: 75%; /* Adjust the width for smaller screens */
+    width: 75%; 
   }
 }
