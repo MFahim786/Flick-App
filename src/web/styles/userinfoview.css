@@ -75,13 +75,9 @@ p {
   overflow: hidden;
 }
 .userimgcontainer:hover .userimg {
-  width: 200px; 
-  height: 200px; 
-  margin-bottom: 100px;
-  z-index: 100;
-  transition: width 0.3s, height 0.3s;
+  transform: scale(1.8);
+  filter:grayscale(0%);
 }
-
  
 .contactsoverly {
   top: 0;
