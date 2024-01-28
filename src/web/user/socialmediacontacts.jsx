@@ -47,7 +47,7 @@ import icon44 from '../assets/icons/IOSAppLink.png';
 import icon45 from '../assets/icons/HuaweiAppLink.png';
 import icon46 from '../assets/icons/GoogleReview.png';
 import icon47 from '../assets/icons/AndroidAppLink.png';
-
+import icon48 from '../assets/icons/Address.png';
 const SocialMediaContact = ({ socialMediaType, socialMedialink, userDirectMode, socialMediaDirectMode, socialMediaName }) => {
     const [linkOpened, setLinkOpened] = useState(false);
 
@@ -92,14 +92,14 @@ const SocialMediaContact = ({ socialMediaType, socialMedialink, userDirectMode, 
         'Casgapp': icon38,
         'BenefitPay': icon39,
         'Applemusic': icon40,
-        'Zoom': icon41,
+        'Zoom Meeting': icon41,
         'Podcast': icon42,
         'Teams': icon43,
         'IOSAppLink': icon44,
         'HuaweiAppLink': icon45,
         'GoogleReview': icon46,
         'AndroidAppLink': icon47,
-
+        'Address': icon48,
     };
 
     const handleClick = () => {
