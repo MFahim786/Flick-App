@@ -48,6 +48,7 @@ import icon45 from '../assets/icons/HuaweiAppLink.png';
 import icon46 from '../assets/icons/GoogleReview.png';
 import icon47 from '../assets/icons/AndroidAppLink.png';
 import icon48 from '../assets/icons/Address.png';
+import icon49 from '../assets/icons/play store.png';
 const SocialMediaContact = ({ socialMediaType, socialMedialink, userDirectMode, socialMediaDirectMode, socialMediaName }) => {
     const [linkOpened, setLinkOpened] = useState(false);
 
@@ -81,25 +82,26 @@ const SocialMediaContact = ({ socialMediaType, socialMedialink, userDirectMode, 
         'kik': icon27,
         'Google': icon28,
         'Email': icon29,
-        'Foodmenu': icon30,
-        'Facetime': icon31,
+        'Food menu': icon30,
+        'Face time': icon31,
         'Envelope': icon32,
         'Edit': icon33,
         'Crypto': icon34,
-        'Contact': icon35,
+        'contact card': icon35,
         'Chat': icon36,
         'Changepassword': icon37,
         'Casgapp': icon38,
         'BenefitPay': icon39,
-        'Applemusic': icon40,
+        'apple music': icon40,
         'Zoom Meeting': icon41,
         'Podcast': icon42,
-        'Teams': icon43,
-        'IOSAppLink': icon44,
-        'HuaweiAppLink': icon45,
-        'GoogleReview': icon46,
-        'AndroidAppLink': icon47,
+        'microsoft teams': icon43,
+        'ios app': icon44,
+        'huawei app': icon45,
+        'Google Review': icon46,
+        'Android App': icon47,
         'Address': icon48,
+        'Facebook': icon49,
     };
 
     const handleClick = () => {
