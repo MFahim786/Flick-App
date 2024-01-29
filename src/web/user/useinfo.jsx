@@ -49,18 +49,19 @@ const UserInfo = () => {
       <div>
         <div>
           <div>
-            {userData.socialMedia
-              .filter((socialMedia) => !socialMedia.isActive)
-              .map((socialMedia) => (
-                <SocialMediaContact
-                  key={socialMedia._id} 
-                  socialMediaType={socialMedia.socialMediaType}
-                  socialMediaName={socialMedia.socialMediaName}
-                  socialMedialink={socialMedia.socialMediaLink}
-                  userDirectMode={userData.userDirectMode}
-                  socialMediaDirectMode={socialMedia.socialMediaDirectMode}
-                />
-              ))}
+           {userData.socialMedia
+  .filter((socialMedia) => socialMedia.isActive) 
+  .map((socialMedia) => (
+    <SocialMediaContact
+      key={socialMedia._id} 
+      socialMediaType={socialMedia.socialMediaType}
+      socialMediaName={socialMedia.socialMediaName}
+      socialMedialink={socialMedia.socialMediaLink}
+      userDirectMode={userData.userDirectMode}
+      socialMediaDirectMode={socialMedia.socialMediaDirectMode}
+    />
+  ))
+}
           </div>
         </div>
       </div>
