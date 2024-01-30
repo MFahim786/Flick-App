@@ -101,7 +101,7 @@ const SocialMediaContact = ({ socialMediaType, socialMedialink, userDirectMode, 
         'Google Review': icon46,
         'Android App': icon47,
         'Address': icon48,
-        'Facebook': icon49,
+        'play store': icon49,
     };
 
     const handleClick = () => {
