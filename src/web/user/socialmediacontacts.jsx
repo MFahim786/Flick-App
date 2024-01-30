@@ -58,7 +58,7 @@ const SocialMediaContact = ({ socialMediaType, socialMedialink, userDirectMode, 
         'Yelp': icon3,
         'X': icon4,
         'WhatsApp': icon5,
-        'WeChat': icon6,
+        'Wechat': icon6,
         'Website': icon7,
         'Viber': icon8,
         'Twitter': icon9,
@@ -101,7 +101,7 @@ const SocialMediaContact = ({ socialMediaType, socialMedialink, userDirectMode, 
         'Google Review': icon46,
         'Android App': icon47,
         'Address': icon48,
-        'playstore': icon49,
+        'Play Store': icon49,
     };
 
     const handleClick = () => {
