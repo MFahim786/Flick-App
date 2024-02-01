@@ -57,7 +57,7 @@ const UserInfo = () => {
                   socialMediaType={socialMedia.socialMediaType}
                   socialMediaName={socialMedia.socialMediaName}
                   socialMedialink={socialMedia.socialMediaLink}
-                  userDirectMode={userData.userDirectMode}
+                  userDirectMode={userData.directMode}
                   socialMediaDirectMode={socialMedia.socialMediaDirectMode}
                 />
               ))}
