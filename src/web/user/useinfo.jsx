@@ -50,7 +50,7 @@ const UserInfo = () => {
         <div>
           <div>
             {userData.socialMedia
-              .filter((socialMedia) => !socialMedia.isActive)
+              .filter((socialMedia) => socialMedia.isActive)
               .map((socialMedia) => (
                 <SocialMediaContact
                   key={socialMedia._id} 
