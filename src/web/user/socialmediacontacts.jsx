@@ -120,7 +120,20 @@ const SocialMediaContact = ({ socialMediaType, socialMedialink, userDirectMode, 
         return null;
     } else if (!userDirectMode) {
         return (
-            <a href={socialMediaType === 'WhatsApp' ? `https://wa.me/${socialMedialink}` : socialMedialink} onClick={handleClick}>
+            href={
+    socialMediaType === 'WhatsApp' 
+      ? `https://wa.me/${socialMedialink}`
+  
+      : socialMediaType === 'Email'
+      ? `mailto:${socialMedialink}`
+      : socialMediaType === 'Phone'
+      ? `tel:${socialMedialink}` 
+      : socialMedialink.startsWith('tel:')
+      ? socialMedialink 
+      : `${socialMedialink}` 
+  }
+  onClick={handleClick}
+>
                 <div className='contactsoverly'>
                     <div className='contacstscontainer'>
                         <div>
