@@ -46,19 +46,19 @@ import icon43 from '../assets/icons/Microsoft Teams.png';
 import icon44 from '../assets/icons/IOSAppLink.png';
 import icon45 from '../assets/icons/HuaweiAppLink.png';
 import icon46 from '../assets/icons/GoogleReview.png';
-import icon47 from '../assets/icons/AndroidAppLink.png';
+import icon47 from '../assets/icons/play store.png';
 import icon48 from '../assets/icons/Address.png';
-import icon49 from '../assets/icons/play store.png';
+
 const SocialMediaContact = ({ socialMediaType, socialMedialink, userDirectMode, socialMediaDirectMode, socialMediaName }) => {
     const [linkOpened, setLinkOpened] = useState(false);
-
+console.log("++++++++",userDirectMode)
     const socialMediaIcons = {
         'Facebook': icon,
         'YouTube': icon2,
         'Yelp': icon3,
         'X': icon4,
         'WhatsApp': icon5,
-        'Wechat': icon6,
+        'WeChat': icon6,
         'Website': icon7,
         'Viber': icon8,
         'Twitter': icon9,
@@ -99,9 +99,9 @@ const SocialMediaContact = ({ socialMediaType, socialMedialink, userDirectMode, 
         'IOS App': icon44,
         'Huawei App': icon45,
         'Google Review': icon46,
-        'Android App': icon47,
+        'Play Store': icon47,
         'Address': icon48,
-        'Play Store': icon49,
+        
     };
 
     const handleClick = () => {
@@ -120,7 +120,8 @@ const SocialMediaContact = ({ socialMediaType, socialMedialink, userDirectMode, 
         return null;
     } else if (!userDirectMode) {
         return (
-            href={
+            <a
+  href={
     socialMediaType === 'WhatsApp' 
       ? `https://wa.me/${socialMedialink}`
   
