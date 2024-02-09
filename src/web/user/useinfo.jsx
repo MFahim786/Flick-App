@@ -1,71 +1,272 @@
-// UserInfo.js
 import React, { useEffect, useState } from 'react';
-import '../styles/userinfoview.css';
+import axios from 'axios';
 import userimg from '../assets/user1.png';
 import SocialMediaContact from './socialmediacontacts';
-
+import {fetchData} from '../../services/issharebycategorey';
+import {saveDataTodefault} from '../../services/issharebycategorey';
+import { GridLoader } from 'react-spinners';
 const UserInfo = () => {
   const [userData, setUserData] = useState(null);
-  const usrimgurl = userData?.userImage;
+  
+  const [fetchedData, setFetchedData] = useState(null);
+  const [loading, setLoading] = useState(false);
+const userid=window.location.pathname.slice(1)
 
   useEffect(() => {
-    // Replace 'your-api-endpoint' 
-    fetch(`https://flickapp.vercel.app/user/${window.location.pathname.slice(1, window.location.pathname.length)}`)
-      .then(response => response.json())
-      .then(data => {
-        // Set the user data to the state
-        setUserData(data.data);
-      })
-      .catch(error => console.error('Error fetching user details:', error));
+    if (!userid) {
+      alert('User ID is empty');
+      return;
+    }
+    // Fetch user data when component mounts
+    saveDataTodefault(userid);
+    
+    // Delay execution of fetchUserData by 5 seconds
+    const timer = setTimeout(() => {
+      fetchUserData();
+    }, 1000);
+  
+    
+    return () => clearTimeout(timer);
   }, []);
 
-  if (!userData) {
-    return <p>Loading...</p>;
-  }
-
-  if (userData.isActive === true) {
-    setTimeout(() =>{
-      alert('This account is private and cannot be viewed');
-    }, 500)
+  const fetchUserData = async () => {
     
-    return null; // or render some alternative UI if needed
-  }
+    try {
+      const response = await fetch(`https://flickapp.vercel.app/user/${window.location.pathname.slice(1)}`);
+      const data = await response.json();
+     
+      setUserData(data.data);
+      if (data.data.isSHareByCatgOn==true) {
+        // If user is shareable by category, start fetching category data
+        
+        fetchCategoryData();
+      }
+    } catch (error) {
+      console.error('Error fetching user details:', error);
+      
+    }
+  };
 
-  return (
-    <div>
-      <div className='overlay'>
-        <div className='modal'>
-          <div className='userimgcontainer'>
-            {/* Add 'title' attribute to display image name on hover */}
-            <img src={usrimgurl ? usrimgurl : userimg} alt={''} className='userimg' title='Click to view full image' />
-          </div>
-          <div className='usrdta'>
-            <h1>{userData.name}</h1>
-            <p className='profession'>{userData.profession}</p>
-            <p>{userData.organization}</p>
+  const fetchCategoryData = async () => {
+   
+    sendNotificationToUser(userData?.deviceToken);
+    setLoading(true);
+    try {
+      let newData = null;
+      // Fetch data until selectedCatgBtnOptionValue is updated
+      while (!newData ||newData?.selectedCatgBtnOptionValue=='default') {
+        newData = await fetchData(userid);
+        setFetchedData(newData);
+        await new Promise(resolve => setTimeout(resolve, 6000)); // Wait for 5 seconds before next fetch
+      }
+    } catch (error) {
+      console.error('Error fetching category data:', error);
+    }
+  };
+  if ( fetchedData?.selectedCatgBtnOptionValue =='default') {
+    return (
+      <div className='spinner'>
+        <GridLoader color={'#aeb5cf'} loading={loading} size={30}/>
+        <h1>Please Wait For User Reponse</h1>
+      </div>
+    );
+  }
+  if ( fetchedData?.selectedCatgBtnOptionValue =='canceled') {
+    return (
+      
+         <h1>Your request has been canceled by the user. Please try again</h1>
+    );
+  }
+  if (fetchedData?.selectedCatgBtnOptionValue=='private') {
+    return (
+      <div>
+        <div className='overlay'>
+          <div className='modal'>
+            <div className='userimgcontainer'>
+              <img src={userData?.userImage || userimg} alt='' className='userimg' title='Click to view full image' />
+            </div>
+            <div className='usrdta'>
+              
+              <h1>{userData?.name}</h1>
+              <p className='profession'>{userData?.profession}</p>
+              <p>{userData?.organization}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div>
         <div>
           <div>
-            {userData.socialMedia
-              .filter((socialMedia) => socialMedia.isActive)
-              .map((socialMedia) => (
-                <SocialMediaContact
-                  key={socialMedia._id} 
-                  socialMediaType={socialMedia.socialMediaType}
-                  socialMediaName={socialMedia.socialMediaName}
-                  socialMedialink={socialMedia.socialMediaLink}
-                  userDirectMode={userData.directMode}
-                  socialMediaDirectMode={socialMedia.socialMediaDirectMode}
-                />
-              ))}
+            <div>
+              {userData?.socialMedia
+                .filter((socialMedia) => socialMedia.isActive==false)
+                .map((socialMedia) => (
+                  <SocialMediaContact
+                    key={socialMedia._id}
+                    socialMediaType={socialMedia.socialMediaType}
+                    socialMediaName={socialMedia.socialMediaName}
+                    socialMedialink={socialMedia.socialMediaLink}
+                    userDirectMode={userData.directMode}
+                    socialMediaDirectMode={socialMedia.socialMediaDirectMode}
+                    cat={socialMedia.category}
+                  />
+                ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+  if (fetchedData?.selectedCatgBtnOptionValue=='public') {
+    console.log('++++++++++++++++++++++++++++++++')
+    return (
+      <div>
+        <div className='overlay'>
+          <div className='modal'>
+            <div className='userimgcontainer'>
+              <img src={userData?.userImage || userimg} alt='' className='userimg' title='Click to view full image' />
+            </div>
+            <div className='usrdta'>
+              
+              <h1>{userData?.name}</h1>
+              <p className='profession'>{userData?.profession}</p>
+              <p>{userData?.organization}</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <div>
+              {userData?.socialMedia
+                .filter((socialMedia) => socialMedia.category==='Public')
+                .map((socialMedia) => (
+                  <SocialMediaContact
+                    key={socialMedia._id}
+                    socialMediaType={socialMedia.socialMediaType}
+                    socialMediaName={socialMedia.socialMediaName}
+                    socialMedialink={socialMedia.socialMediaLink}
+                    userDirectMode={userData.directMode}
+                    socialMediaDirectMode={socialMedia.socialMediaDirectMode}
+                    cat={socialMedia.category}
+                  />
+                ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  if (fetchedData?.selectedCatgBtnOptionValue=='all') {
+    return (
+      <div>
+        <div className='overlay'>
+          <div className='modal'>
+            <div className='userimgcontainer'>
+              <img src={userData?.userImage || userimg} alt='' className='userimg' title='Click to view full image' />
+            </div>
+            <div className='usrdta'>
+              
+              <h1>{userData?.name}</h1>
+              <p className='profession'>{userData?.profession}</p>
+              <p>{userData?.organization}</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <div>
+              {userData?.socialMedia
+                .filter((socialMedia) => socialMedia)
+                .map((socialMedia) => (
+                  <SocialMediaContact
+                    key={socialMedia._id}
+                    socialMediaType={socialMedia.socialMediaType}
+                    socialMediaName={socialMedia.socialMediaName}
+                    socialMedialink={socialMedia.socialMediaLink}
+                    userDirectMode={userData.directMode}
+                    socialMediaDirectMode={socialMedia.socialMediaDirectMode}
+                    cat={socialMedia.category}
+                  />
+                ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
+  if (userData && userData.isActive === true) {
+    setTimeout(() => {
+      alert('This account is private and cannot be viewed');
+    }, 500);
+    return null;
+  }
+  if (userData && userData.isLost === true) {
+    setTimeout(() => {
+      alert(userData.lostMassege);
+    }, 500);
+    return null;
+  }
+  async function sendNotificationToUser(tokens, ) {
+    console.log('chlaa')
+    try {
+        // Iterate over each device token
+        for (const token of tokens) {
+            // Make an HTTP request to FCM API for each token
+            const response = await axios.post('https://fcm.googleapis.com/fcm/send', {
+                to: `${token}`, 
+                notification: {
+                    title: "Please select Social Media Handles",
+                    body: "Please select Social Media Handles",
+                },
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer AAAA3T3WtjY:APA91bFEkTNtpWPbxSe7x-sgQjusAirIBm0bqDqrAYMmJOIybEDtq0wVmVUDxOCKkyMk96G58AQ3cno3j_iUUzNe2GKuvKB8OlzA9tT0nFzkQgiyOHFqSSBb79wy0dYcjGpBPEvCTaen`, 
+                },
+            });
+            console.log('Notification sent successfully to token:', token);
+            console.log('Response:', response.data);
+        }
+    } catch (error) {
+        console.error('Error sending notification:', error);
+    }}
+    if (userData?.isActive==false) {
+      return (
+        <div>
+          <div className='overlay'>
+            <div className='modal'>
+              <div className='userimgcontainer'>
+                <img src={userData?.userImage || userimg} alt='' className='userimg' title='Click to view full image' />
+              </div>
+              <div className='usrdta'>
+                
+                <h1>{userData?.name}</h1>
+                <p className='profession'>{userData?.profession}</p>
+                <p>{userData?.organization}</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <div>
+                {userData?.socialMedia
+                  .filter((socialMedia) => socialMedia.isActive)
+                  .map((socialMedia) => (
+                    <SocialMediaContact
+                      key={socialMedia._id}
+                      socialMediaType={socialMedia.socialMediaType}
+                      socialMediaName={socialMedia.socialMediaName}
+                      socialMedialink={socialMedia.socialMediaLink}
+                      userDirectMode={userData.directMode}
+                      socialMediaDirectMode={socialMedia.socialMediaDirectMode}
+                      cat={socialMedia.category}
+                    />
+                  ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
 };
 
 export default UserInfo;
