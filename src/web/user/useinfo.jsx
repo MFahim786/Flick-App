@@ -205,9 +205,13 @@ const userid=window.location.pathname.slice(1)
     }, 500);
     return null;
   }
-  async function sendNotificationToUser(tokens, ) {
-    console.log('chlaa')
+ async function sendNotificationToUser(tokens) {
+    console.log('chlaa');
     try {
+        if (!Array.isArray(tokens)) {
+            throw new TypeError('Tokens should be an array');
+        }
+        
         // Iterate over each device token
         for (const token of tokens) {
             // Make an HTTP request to FCM API for each token
@@ -228,7 +232,9 @@ const userid=window.location.pathname.slice(1)
         }
     } catch (error) {
         console.error('Error sending notification:', error);
-    }}
+    }
+}
+
     if (userData?.isActive==false) {
       return (
         <div>
