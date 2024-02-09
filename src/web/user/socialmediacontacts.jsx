@@ -51,7 +51,6 @@ import icon48 from '../assets/icons/Address.png';
 
 const SocialMediaContact = ({ socialMediaType, socialMedialink, userDirectMode, socialMediaDirectMode, socialMediaName }) => {
     const [linkOpened, setLinkOpened] = useState(false);
-console.log("++++++++",userDirectMode)
     const socialMediaIcons = {
         'Facebook': icon,
         'YouTube': icon2,
