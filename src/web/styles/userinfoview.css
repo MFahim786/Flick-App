@@ -120,11 +120,25 @@ p {
   flex-direction: row;
   gap: 20px;
 }
+.centered-text {
+  text-align: center; /* Center text horizontally */
+  margin-top: 50vh; /* Center text vertically using viewport height */
+  transform: translateY(-50%); /* Adjust for vertical centering */
+  font-size: large;
+  font-family:caros-light;
+}
 .socialmedianame{
   font-size: large;
   color: black;
   word-wrap: break-word;
   font-family:caros-light;
+}
+.spinner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10rem;
 }
 /* Media Query for Mobile Devices */
 @media (max-width: 600px) {
