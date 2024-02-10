@@ -7,15 +7,11 @@ import {saveDataTodefault} from '../../services/issharebycategorey';
 import { GridLoader } from 'react-spinners';
 const UserInfo = () => {
   const [userData, setUserData] = useState(null);
-  console.log(userData?.deviceToken)
-  const tokenw =userData?.deviceToken
-  console.log('++', tokenw)
   const [fetchedData, setFetchedData] = useState(null);
   const [loading, setLoading] = useState(false);
   const tokens =userData?.deviceToken ;
   localStorage.setItem('tokens', JSON.stringify(tokens));
 const userid=window.location.pathname.slice(1)
-// console.log(userData?.deviceToken)
   useEffect(() => {
     if (!userid) {
       alert('User ID is empty');
@@ -87,7 +83,7 @@ const userid=window.location.pathname.slice(1)
 </div>
     );
   }
-  if (fetchedData?.selectedCatgBtnOptionValue=='private') {
+  if (fetchedData?.selectedCatgBtnOptionValue=='business') {
     return (
       <div>
         <div className='overlay'>
@@ -107,7 +103,7 @@ const userid=window.location.pathname.slice(1)
           <div>
             <div>
               {userData?.socialMedia
-                .filter((socialMedia) => socialMedia.isActive==false)
+                .filter((socialMedia) => socialMedia.category=='business'&& socialMedia.isActive==true)
                 .map((socialMedia) => (
                   <SocialMediaContact
                     key={socialMedia._id}
@@ -126,7 +122,7 @@ const userid=window.location.pathname.slice(1)
     );
   }
   if (fetchedData?.selectedCatgBtnOptionValue=='public') {
-    console.log('++++++++++++++++++++++++++++++++')
+    
     return (
       <div>
         <div className='overlay'>
@@ -146,7 +142,7 @@ const userid=window.location.pathname.slice(1)
           <div>
             <div>
               {userData?.socialMedia
-                .filter((socialMedia) => socialMedia.category==='Public')
+                .filter((socialMedia) => socialMedia.category==='Public'&& socialMedia.isActive==true)
                 .map((socialMedia) => (
                   <SocialMediaContact
                     key={socialMedia._id}
@@ -220,7 +216,7 @@ const userid=window.location.pathname.slice(1)
         // Retrieve tokens from local storage
         const storedTokens = localStorage.getItem('tokens');
         const tokens = storedTokens ? JSON.parse(storedTokens) : [];
-        console.log('---', tokens);
+        
 
         // Iterate over each device token
         for (let i = 0; i < tokens.length; i++) {
