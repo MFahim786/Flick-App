@@ -66,7 +66,7 @@ const userid=window.location.pathname.slice(1)
       while (!newData ||newData?.selectedCatgBtnOptionValue=='default') {
         newData = await fetchData(userid);
         setFetchedData(newData);
-        await new Promise(resolve => setTimeout(resolve, 6000)); // Wait for 5 seconds before next fetch
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for 5 seconds before next fetch
       }
     } catch (error) {
       console.error('Error fetching category data:', error);
@@ -76,14 +76,18 @@ const userid=window.location.pathname.slice(1)
     return (
       <div className='spinner'>
         <GridLoader color={'#aeb5cf'} loading={loading} size={30}/>
-        <h1>Please Wait For User Reponse</h1>
+        <h1>Please Wait For User </h1>
+        <h1>Response</h1>
       </div>
     );
   }
   if ( fetchedData?.selectedCatgBtnOptionValue =='canceled') {
     return (
-      
-         <h1>Your request has been canceled by the user. Please try again</h1>
+      <div class="canceltext-container">
+  <div class="canceltext">
+    <h1>Your request has been canceled by the user. Please try again</h1>
+  </div>
+</div>
     );
   }
   if (fetchedData?.selectedCatgBtnOptionValue=='private') {
@@ -251,7 +255,7 @@ const userid=window.location.pathname.slice(1)
 }
 
 
-    if (userData?.isActive==false) {
+    if (userData?.isSHareByCatgOn==false) {
       return (
         <div>
           <div className='overlay'>
