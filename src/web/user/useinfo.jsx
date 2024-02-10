@@ -103,7 +103,7 @@ const userid=window.location.pathname.slice(1)
           <div>
             <div>
               {userData?.socialMedia
-                .filter((socialMedia) => socialMedia.category=='Business'&& socialMedia.isActive==true)
+                .filter((socialMedia) => socialMedia.category=='Bussiness'&& socialMedia.isActive==true)
                 .map((socialMedia) => (
                   <SocialMediaContact
                     key={socialMedia._id}
