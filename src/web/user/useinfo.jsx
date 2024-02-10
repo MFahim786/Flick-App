@@ -7,13 +7,15 @@ import {saveDataTodefault} from '../../services/issharebycategorey';
 import { GridLoader } from 'react-spinners';
 const UserInfo = () => {
   const [userData, setUserData] = useState(null);
-  
+  console.log(userData?.deviceToken)
+  const tokenw =userData?.deviceToken
+  console.log('++', tokenw)
   const [fetchedData, setFetchedData] = useState(null);
   const [loading, setLoading] = useState(false);
-const tokens =userData?.deviceToken ;
+  const tokens =userData?.deviceToken ;
   localStorage.setItem('tokens', JSON.stringify(tokens));
 const userid=window.location.pathname.slice(1)
-
+// console.log(userData?.deviceToken)
   useEffect(() => {
     if (!userid) {
       alert('User ID is empty');
@@ -49,9 +51,14 @@ const userid=window.location.pathname.slice(1)
     }
   };
 
+
   const fetchCategoryData = async () => {
+    const timer = setTimeout(() => {
+      console.log('Fetching user details')
+      sendNotificationToUser(userData?.deviceToken);
+      
+    }, 5000);
    
-    sendNotificationToUser(userData?.deviceToken);
     setLoading(true);
     try {
       let newData = null;
@@ -242,6 +249,7 @@ const userid=window.location.pathname.slice(1)
         console.error('Error sending notification:', error);
     }
 }
+
 
     if (userData?.isActive==false) {
       return (
