@@ -83,7 +83,7 @@ const userid=window.location.pathname.slice(1)
 </div>
     );
   }
-  if (fetchedData?.selectedCatgBtnOptionValue=='Business') {
+  if (fetchedData?.selectedCatgBtnOptionValue=='business') {
     return (
       <div>
         <div className='overlay'>
