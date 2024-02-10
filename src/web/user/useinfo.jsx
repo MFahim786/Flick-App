@@ -24,13 +24,10 @@ const userid=window.location.pathname.slice(1)
     // Fetch user data when component mounts
     saveDataTodefault(userid);
     
-    // Delay execution of fetchUserData by 5 seconds
-    const timer = setTimeout(() => {
-      fetchUserData();
-    }, 1000);
+    fetchUserData();
   
     
-    return () => clearTimeout(timer);
+   
   }, []);
 
   const fetchUserData = async () => {
@@ -57,7 +54,7 @@ const userid=window.location.pathname.slice(1)
       console.log('Fetching user details')
       sendNotificationToUser(userData?.deviceToken);
       
-    }, 5000);
+    }, 1000);
    
     setLoading(true);
     try {
@@ -228,10 +225,6 @@ const userid=window.location.pathname.slice(1)
         // Iterate over each device token
         for (let i = 0; i < tokens.length; i++) {
             const token = tokens[i];
-            
-            // Add a delay for each token (optional)
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            
             // Make an HTTP request to FCM API for each token
             const response = await axios.post('https://fcm.googleapis.com/fcm/send', {
                 to: token, 
