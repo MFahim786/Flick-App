@@ -22,7 +22,7 @@ async function saveDataTodefault(userid) {
         },
         body: JSON.stringify({
             selectedCatgBtnOptionValue:"default",
-            isChoosedCatgBtnOptions:true,
+            isChoosedCatgBtnOptions:false,
 
         }),
       });
