@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/navbar.css'; // Import your CSS file
-import img from '../assets/user1.png'
+import '../styles/navbar.css'; 
+import img from '../assets/webviewlogo.png';
 const Index = () => {
     return (
       <div className="container">
