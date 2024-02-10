@@ -10,6 +10,8 @@ const UserInfo = () => {
   
   const [fetchedData, setFetchedData] = useState(null);
   const [loading, setLoading] = useState(false);
+const tokens =userData?.deviceToken ;
+  localStorage.setItem('tokens', JSON.stringify(tokens));
 const userid=window.location.pathname.slice(1)
 
   useEffect(() => {
