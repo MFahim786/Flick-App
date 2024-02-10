@@ -83,7 +83,7 @@ const userid=window.location.pathname.slice(1)
 </div>
     );
   }
-  if (fetchedData?.selectedCatgBtnOptionValue=='business') {
+  if (fetchedData?.selectedCatgBtnOptionValue=='Business') {
     return (
       <div>
         <div className='overlay'>
@@ -103,7 +103,7 @@ const userid=window.location.pathname.slice(1)
           <div>
             <div>
               {userData?.socialMedia
-                .filter((socialMedia) => socialMedia.category=='business'&& socialMedia.isActive==true)
+                .filter((socialMedia) => socialMedia.category=='Business'&& socialMedia.isActive==true)
                 .map((socialMedia) => (
                   <SocialMediaContact
                     key={socialMedia._id}
