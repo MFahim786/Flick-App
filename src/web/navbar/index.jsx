@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/navbar.css'; 
-import img from '../assets/webviewlogo.png';
+import img from '../assets/webviewlogo2.png';
 const Index = () => {
     return (
       <div className="container">
