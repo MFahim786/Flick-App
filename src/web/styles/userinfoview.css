@@ -121,9 +121,9 @@ p {
   gap: 20px;
 }
 .centered-text {
-  text-align: center; /* Center text horizontally */
-  margin-top: 50vh; /* Center text vertically using viewport height */
-  transform: translateY(-50%); /* Adjust for vertical centering */
+  text-align: center; 
+  margin-top: 50vh; 
+  transform: translateY(-50%);
   font-size: large;
   font-family:caros-light;
 }
@@ -132,6 +132,21 @@ p {
   color: black;
   word-wrap: break-word;
   font-family:caros-light;
+}
+.canceltext-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh; 
+}
+
+/* Justify text */
+.canceltext {
+  text-align: justify;
+}
+h1{
+  font-family:caros-light;
+  text-align: center;
 }
 .spinner{
   display: flex;
