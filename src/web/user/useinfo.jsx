@@ -205,18 +205,23 @@ const userid=window.location.pathname.slice(1)
     }, 500);
     return null;
   }
- async function sendNotificationToUser(tokens) {
-    console.log('chlaa');
+  async function sendNotificationToUser() {
     try {
-        if (!Array.isArray(tokens)) {
-            throw new TypeError('Tokens should be an array');
-        }
-        
+        // Retrieve tokens from local storage
+        const storedTokens = localStorage.getItem('tokens');
+        const tokens = storedTokens ? JSON.parse(storedTokens) : [];
+        console.log('---', tokens);
+
         // Iterate over each device token
-        for (const token of tokens) {
+        for (let i = 0; i < tokens.length; i++) {
+            const token = tokens[i];
+            
+            // Add a delay for each token (optional)
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
             // Make an HTTP request to FCM API for each token
             const response = await axios.post('https://fcm.googleapis.com/fcm/send', {
-                to: `${token}`, 
+                to: token, 
                 notification: {
                     title: "Please select Social Media Handles",
                     body: "Please select Social Media Handles",
@@ -227,6 +232,7 @@ const userid=window.location.pathname.slice(1)
                     'Authorization': `Bearer AAAA3T3WtjY:APA91bFEkTNtpWPbxSe7x-sgQjusAirIBm0bqDqrAYMmJOIybEDtq0wVmVUDxOCKkyMk96G58AQ3cno3j_iUUzNe2GKuvKB8OlzA9tT0nFzkQgiyOHFqSSBb79wy0dYcjGpBPEvCTaen`, 
                 },
             });
+
             console.log('Notification sent successfully to token:', token);
             console.log('Response:', response.data);
         }
